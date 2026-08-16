@@ -1,0 +1,123 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* From reference art — paired for WCAG AA contrast */
+  --bg: #fcfbfa;
+  --ink: #17140d; /* 18.0:1 on --bg */
+  --muted: #4a4844; /* 8.9:1 on --bg */
+  --mid: #5a5752; /* ≥3:1 UI / hover on --bg */
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  box-sizing: border-box;
+  position: relative;
+  min-height: 100%;
+  min-height: 100dvh;
+  padding: 2rem;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  width: max-content;
+  max-width: calc(100% - 4rem);
+  text-align: left;
+}
+
+.header {
+  width: auto;
+}
+
+.header h1 {
+  font-family: Archivo, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  margin: 0;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  letter-spacing: 0;
+  color: var(--ink);
+  text-align: left;
+}
+
+.tagline {
+  margin: 0;
+  width: auto;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: 0;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+  width: auto;
+}
+
+.social-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  padding: 0;
+  margin: 0;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* Expand hit area without shifting the icon’s left edge */
+.social-link::after {
+  content: "";
+  position: absolute;
+  inset: -0.55rem;
+}
+
+.social-link:hover,
+.social-link:focus-visible {
+  color: var(--mid);
+  transform: scale(1.08);
+  outline: none;
+}
+
+.social-link:focus-visible {
+  border-radius: 2px;
+  box-shadow: 0 0 0 2px var(--ink);
+}
+
+.icon {
+  display: block;
+  width: 1.15rem;
+  height: 1.15rem;
+}
